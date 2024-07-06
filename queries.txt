@@ -1,0 +1,77 @@
+query getAllQuotes{
+  quotes{
+    name
+    by
+  }
+}
+
+---------------------------------
+
+query getAllUsers{
+  users {
+    _id
+    firstname
+    email
+  }
+}
+
+----------------------------------
+
+
+query getUserById($userId: ID!){
+  user(_id: $userId) {
+    _id
+    firstname
+    email
+  }
+}
+
+----------------------------------
+
+query getQuoteByUser($by: ID!){
+  iquote(by: $by) {
+    name
+  }
+}
+
+----------------------------------
+
+mutation newUserSignup($userNew:UserInputSignUp!){
+  signUpUser(userNew: $userNew) {
+    _id
+    email
+    firstname
+    lastname
+    quotes {
+      name
+    }
+  }
+}
+
+arguments from frontend
+
+{  
+  "userNew": {
+    "firstname": "charles",
+    "lastname": "babbage",
+    "email": "charles@gmail.com",
+    "password": "cb123"
+  }
+}
+
+---------------------------------------------------
+mutation userSignIn($userSignIn: UserInputSignIn!){
+  signInUser(userSignIn: $userSignIn) {
+    token
+  }
+}
+
+arguments from frontend
+{
+  "userSignIn": {
+    "email": "charles@gmail.com",
+    "password": "cb123"
+  }
+}
+
+-----------------------------------------------------
