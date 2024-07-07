@@ -2,7 +2,6 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const Quote = require('../../models/Quote');
 const addQuote = async (name, context) => {
-    console.log(name);
     const headers = context.rawHeaders;
     const cookieIdx = headers.indexOf('Cookie');
     if (cookieIdx === -1) {
